@@ -14,10 +14,15 @@ $query = "SELECT employee_id, last_name, first_name, title "
 $result = $db->query($query);
 
 $json = array();
-while($row = pg_fetch_assoc($result))
-    {
-        $json[] = $row;
-    }
+//while($row = pg_fetch_assoc($result))
+  //  {
+    //    $json[] = $row;
+    //}
+	
+while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    $json[] = $row;
+}
+$result->closeCursor();	
 	
 //$json = $result->fetch(PDO::FETCH_ASSOC);
 
