@@ -13,7 +13,15 @@ $query = "SELECT employee_id, last_name, first_name, title "
     . "FROM employees ORDER BY last_name ASC, first_name ASC";
 $result = $db->query($query);
 
-$json = $result->fetch(PDO::FETCH_ASSOC);
+$json = array();
+while($row = pg_fetch_assoc($result))
+    {
+        $json[] = $row;
+    }
+	
+//$json = $result->fetch(PDO::FETCH_ASSOC);
+
+//$result->closeCursor();
 
 echo json_encode($json);
 
