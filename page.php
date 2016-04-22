@@ -13,8 +13,8 @@ $query = "SELECT employee_id, last_name, first_name, title "
     . "FROM employees ORDER BY last_name ASC, first_name ASC";
 $result = $db->query($query);
 
-$json = pg_fetch_result($result);
+$json = pg_fetch_result($result, 1, 0);
 
-echo json_encode($result, 1, 0);
+echo json_encode($json);
 
 ?>
